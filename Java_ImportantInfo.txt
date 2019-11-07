@@ -1,0 +1,5 @@
+1.	Servlet class file location in tomcat
+	first double click on tomcat server and find server path.
+	go to server path
+	cd wtwebapps/<your project name>/WEB-INF/classes/<package directory>/
+	
