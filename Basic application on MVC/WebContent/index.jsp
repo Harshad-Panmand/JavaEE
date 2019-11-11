@@ -9,7 +9,7 @@
 <body>
 	It's home buddy<br />
 	<a href="<%=request.getContextPath() %>/Controller?page=login">Login</a><br />
-	<a href="<%=request.getContextPath() %>/Controller?page=singup">Sign Up</a><br />
+	<a href="<%=request.getContextPath() %>/Controller?page=signup">Sign Up</a><br />
 	<a href="<%=request.getContextPath() %>/Controller?page=about">About</a><br />
 </body>
 </html>

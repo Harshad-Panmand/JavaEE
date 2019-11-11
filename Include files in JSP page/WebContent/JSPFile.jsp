@@ -8,11 +8,11 @@
 </head>
 <body>
 
-<%-- Use below tag for including static content file --%>
+<%-- Use below tag(directive include) for including static content file --%>
 <%@ include file = "file1.txt" %>
 <br/>
 
-<%-- Use below tag for including dynamic content file --%>
+<%-- Use below tag (jsp include)for including dynamic content file --%>
 <jsp:include page="file2.txt"></jsp:include>
 
 </body>
