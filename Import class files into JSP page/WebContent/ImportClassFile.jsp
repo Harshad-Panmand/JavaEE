@@ -8,8 +8,8 @@
 <title>Import class file in JSP</title>
 </head>
 <body>
-	<%-- Using 'include' keyword we can only include file --%>
-	<%-- Where as using 'import' we can only import 'type' like class --%>
+	<%-- Using 'include' keyword we can only include static file --%>
+	<%-- Where as using 'import' we can only import 'type', like class --%>
 	<%-- <%@ page import="java.util.Date"%> --%>
 	<%=new Date()%>
 	<br>
