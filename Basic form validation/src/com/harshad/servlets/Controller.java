@@ -47,7 +47,6 @@ public class Controller extends HttpServlet {
 			response.getWriter().print(String.join("<br/>", languages));
 		} else {
 			out.print("Nothing is selected");
-			out.print("<br/>");
 		}
 
 		response.getWriter().print("<br/>" + "Country :" + request.getParameter("country"));
