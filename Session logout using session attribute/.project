@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>Session destroy</name>
+	<name>Session logout using session attribute</name>
 	<comment></comment>
 	<projects>
 	</projects>
