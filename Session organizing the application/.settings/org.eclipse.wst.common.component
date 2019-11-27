@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+        
+    <wb-module deploy-name="Session organizing the application">
+                
+        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+                
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+                
+        <property name="context-root" value="Session_organising_the_application"/>
+                
+        <property name="java-output-path" value="/Session organizing the application/build/classes"/>
+            
+    </wb-module>
+    
+</project-modules>
