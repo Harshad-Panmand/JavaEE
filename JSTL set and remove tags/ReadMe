@@ -1,0 +1,3 @@
+Prerequisite:
+1. Download load jstl jar and place it in WebContent->WEB-INF->lib
+2. Added class path of jsp-api.jar and servlet-api.jar in build path's library
