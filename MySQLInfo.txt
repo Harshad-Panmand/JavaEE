@@ -1,0 +1,5 @@
+MySQL Root Password: MySQLRoot@123
+
+User info: 
+name: harshad
+password: Harshad@123
