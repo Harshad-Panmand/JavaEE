@@ -1,0 +1,806 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="TaskPaneApp">
+        
+    <Id>e504fb41-a92a-4526-b101-542f357b7acb</Id>
+        
+    <Version>1.0.0.0</Version>
+        
+    <ProviderName>PTC</ProviderName>
+        
+    <DefaultLocale>en-US</DefaultLocale>
+        
+    <DisplayName DefaultValue="Windchill"/>
+        
+    <Description DefaultValue="Document Management in Windchill"/>
+        
+    <IconUrl DefaultValue="https://google.com:2222/Windchill/netmarkets/html/officeapp/icons/document_new_32x32.png"/>
+        
+    <Hosts>
+                
+        <Host Name="Document"/>
+                
+        <Host Name="Workbook"/>
+                
+        <Host Name="Presentation"/>
+            
+    </Hosts>
+        
+    <DefaultSettings>
+                
+        <SourceLocation DefaultValue="https://google.com:2222/"/>
+            
+    </DefaultSettings>
+        
+    <Permissions>ReadWriteDocument</Permissions>
+        
+    <!--BeginAddinCommandsMode integration -->
+        
+    <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="VersionOverridesV1_0">
+                
+        <Hosts>
+                        
+            <!--Each host can have a different set of commands. -->
+                        
+            <!-- Workbook=Excel Document=Word Presentation=PowerPoint -->
+                        
+            <!-- Make sure the hosts you override match the hosts declared in the 
+                top section of the manifest -->
+                        
+            <!-- Word Online Ribbon bar -->
+                        
+            <Host xsi:type="Document">
+                                
+                <DesktopFormFactor>
+                                        
+                    <GetStarted>
+                                                
+                        <Title resid="Windchill.GetStarted.Title"/>
+                                                
+                        <Description resid="Windchill.GetStarted.Description"/>
+                                                
+                        <LearnMoreUrl resid="LearnMoreUrlRes"/>
+                                            
+                    </GetStarted>
+                                        
+                    <FunctionFile resid="Windchill.FunctionFile.Url"/>
+                                        
+                    <ExtensionPoint xsi:type="PrimaryCommandSurface">
+                                                
+                        <CustomTab id="Windchill.Ribbon">
+                                                        
+                            <!-- Document Group -->
+                                                        
+                            <Group id="Windchill.Ribbon.DocumentGroup">
+                                                                
+                                <Label resid="Windchill.Ribbon.DocumentGroupLabel"/>
+                                                                
+                                <Icon>
+                                                                        
+                                    <bt:Image resid="Windchill.NewDocButton.Icon" size="16"/>
+                                                                        
+                                    <bt:Image resid="Windchill.NewDocButton.Icon" size="32"/>
+                                                                        
+                                    <bt:Image resid="Windchill.NewDocButton.Icon" size="80"/>
+                                                                    
+                                </Icon>
+                                                                
+                                <!-- New Document Button -->
+                                                                
+                                <Control id="Windchill.NewDocButton" xsi:type="Button">
+                                                                        
+                                    <Label resid="Windchill.NewDocButton.Label"/>
+                                                                        
+                                    <Supertip>
+                                                                                
+                                        <Title resid="Windchill.NewDocButton.Label"/>
+                                                                                
+                                        <Description resid="Windchill.NewDocButton.Tooltip"/>
+                                                                            
+                                    </Supertip>
+                                                                        
+                                    <Icon>
+                                                                                
+                                        <bt:Image resid="Windchill.NewDocButton.Icon" size="16"/>
+                                                                                
+                                        <bt:Image resid="Windchill.NewDocButton.Icon" size="32"/>
+                                                                                
+                                        <bt:Image resid="Windchill.NewDocButton.Icon" size="80"/>
+                                                                            
+                                    </Icon>
+                                                                        
+                                    <Action xsi:type="ExecuteFunction">
+                                                                                
+                                        <FunctionName>newDocument</FunctionName>
+                                                                            
+                                    </Action>
+                                                                    
+                                </Control>
+                                                                
+                                <!-- Checkin Button -->
+                                                                
+                                <Control id="Windchill.CheckinButton" xsi:type="Button">
+                                                                        
+                                    <Label resid="Windchill.CheckinButton.Label"/>
+                                                                        
+                                    <Supertip>
+                                                                                
+                                        <Title resid="Windchill.CheckinButton.Label"/>
+                                                                                
+                                        <Description resid="Windchill.CheckinButton.Tooltip"/>
+                                                                            
+                                    </Supertip>
+                                                                        
+                                    <Icon>
+                                                                                
+                                        <bt:Image resid="Windchill.CheckinButton.Icon" size="16"/>
+                                                                                
+                                        <bt:Image resid="Windchill.CheckinButton.Icon" size="32"/>
+                                                                                
+                                        <bt:Image resid="Windchill.CheckinButton.Icon" size="80"/>
+                                                                            
+                                    </Icon>
+                                                                        
+                                    <Action xsi:type="ExecuteFunction">
+                                                                                
+                                        <FunctionName>checkinFunction</FunctionName>
+                                                                            
+                                    </Action>
+                                                                    
+                                </Control>
+                                                                
+                                <!-- Checkout Menu -->
+                                                                
+                                <Control id="Windchill.Menu" xsi:type="Menu">
+                                                                        
+                                    <Label resid="Windchill.Dropdown.Label"/>
+                                                                        
+                                    <Supertip>
+                                                                                
+                                        <Title resid="Windchill.Dropdown.Label"/>
+                                                                                
+                                        <Description resid="Windchill.Dropdown.Tooltip"/>
+                                                                            
+                                    </Supertip>
+                                                                        
+                                    <Icon>
+                                                                                
+                                        <bt:Image resid="Windchill.CheckoutButton.Icon" size="16"/>
+                                                                                
+                                        <bt:Image resid="Windchill.CheckoutButton.Icon" size="32"/>
+                                                                                
+                                        <bt:Image resid="Windchill.CheckoutButton.Icon" size="80"/>
+                                                                            
+                                    </Icon>
+                                                                        
+                                    <Items>
+                                                                                
+                                        <!-- Checkout Menu Item -->
+                                                                                
+                                        <Item id="Windchill.Menu.Checkout">
+                                                                                        
+                                            <Label resid="Windchill.Checkout.Label"/>
+                                                                                        
+                                            <Supertip>
+                                                                                                
+                                                <Title resid="Windchill.Checkout.Label"/>
+                                                                                                
+                                                <Description resid="Windchill.Checkout.Tooltip"/>
+                                                                                            
+                                            </Supertip>
+                                                                                        
+                                            <Icon>
+                                                                                                
+                                                <bt:Image resid="Windchill.CheckoutButton.Icon.16" size="16"/>
+                                                                                                
+                                                <bt:Image resid="Windchill.CheckoutButton.Icon" size="32"/>
+                                                                                                
+                                                <bt:Image resid="Windchill.CheckoutButton.Icon" size="80"/>
+                                                                                            
+                                            </Icon>
+                                                                                        
+                                            <Action xsi:type="ExecuteFunction">
+                                                                                                
+                                                <FunctionName>checkOutFunction</FunctionName>
+                                                                                            
+                                            </Action>
+                                                                                    
+                                        </Item>
+                                                                                
+                                        <!-- Undo-Checkout Menu Item -->
+                                                                                
+                                        <Item id="Windchill.Menu.UndoCheckout">
+                                                                                        
+                                            <Label resid="Windchill.UndoCheckout.Label"/>
+                                                                                        
+                                            <Supertip>
+                                                                                                
+                                                <Title resid="Windchill.UndoCheckout.Label"/>
+                                                                                                
+                                                <Description resid="Windchill.UndoCheckout.Tooltip"/>
+                                                                                            
+                                            </Supertip>
+                                                                                        
+                                            <Icon>
+                                                                                                
+                                                <bt:Image resid="Windchill.UndoCheckoutButton.Icon" size="16"/>
+                                                                                                
+                                                <bt:Image resid="Windchill.UndoCheckoutButton.Icon" size="32"/>
+                                                                                                
+                                                <bt:Image resid="Windchill.UndoCheckoutButton.Icon" size="80"/>
+                                                                                            
+                                            </Icon>
+                                                                                        
+                                            <Action xsi:type="ExecuteFunction">
+                                                                                                
+                                                <FunctionName>undoCheckOutFunction</FunctionName>
+                                                                                            
+                                            </Action>
+                                                                                    
+                                        </Item>
+                                                                            
+                                    </Items>
+                                                                    
+                                </Control>
+                                                            
+                            </Group>
+                                                        
+                            <!-- View Information Group -->
+                                                        
+                            <Group id="Windchill.Ribbon.ViewGroup">
+                                                                
+                                <Label resid="Windchill.Ribbon.ViewGroupLabel"/>
+                                                                
+                                <Icon>
+                                                                        
+                                    <bt:Image resid="Windchill.ViewInfoButton.Icon" size="16"/>
+                                                                        
+                                    <bt:Image resid="Windchill.ViewInfoButton.Icon" size="32"/>
+                                                                        
+                                    <bt:Image resid="Windchill.ViewInfoButton.Icon" size="80"/>
+                                                                    
+                                </Icon>
+                                                                
+                                <!-- View Information Button -->
+                                                                
+                                <Control id="Windchill.ViewInfoButton" xsi:type="Button">
+                                                                        
+                                    <Label resid="Windchill.ViewInfoButton.Label"/>
+                                                                        
+                                    <Supertip>
+                                                                                
+                                        <Title resid="Windchill.ViewInfoButton.Label"/>
+                                                                                
+                                        <Description resid="Windchill.ViewInfoButton.Tooltip"/>
+                                                                            
+                                    </Supertip>
+                                                                        
+                                    <Icon>
+                                                                                
+                                        <bt:Image resid="Windchill.ViewInfoButton.Icon" size="16"/>
+                                                                                
+                                        <bt:Image resid="Windchill.ViewInfoButton.Icon" size="32"/>
+                                                                                
+                                        <bt:Image resid="Windchill.ViewInfoButton.Icon" size="80"/>
+                                                                            
+                                    </Icon>
+                                                                        
+                                    <Action xsi:type="ExecuteFunction">
+                                                                                
+                                        <FunctionName>viewInfoFunction</FunctionName>
+                                                                            
+                                    </Action>
+                                                                    
+                                </Control>
+                                                            
+                            </Group>
+                                                        
+                            <Label resid="Windchill.Ribbon.Label"/>
+                                                    
+                        </CustomTab>
+                                            
+                    </ExtensionPoint>
+                                    
+                </DesktopFormFactor>
+                            
+            </Host>
+                        
+            <!-- Excel Online Ribbon bar -->
+                        
+            <Host xsi:type="Workbook">
+                                
+                <DesktopFormFactor>
+                                        
+                    <GetStarted>
+                                                
+                        <Title resid="Windchill.GetStarted.Title"/>
+                                                
+                        <Description resid="Windchill.GetStarted.Description"/>
+                                                
+                        <LearnMoreUrl resid="LearnMoreUrlRes"/>
+                                            
+                    </GetStarted>
+                                        
+                    <FunctionFile resid="Windchill.FunctionFile.Url"/>
+                                        
+                    <ExtensionPoint xsi:type="PrimaryCommandSurface">
+                                                
+                        <CustomTab id="Windchill.Ribbon">
+                                                        
+                            <!-- Document Group -->
+                                                        
+                            <Group id="Windchill.Ribbon.DocumentGroup">
+                                                                
+                                <Label resid="Windchill.Ribbon.DocumentGroupLabel"/>
+                                                                
+                                <Icon>
+                                                                        
+                                    <bt:Image resid="Windchill.NewDocButton.Icon" size="16"/>
+                                                                        
+                                    <bt:Image resid="Windchill.NewDocButton.Icon" size="32"/>
+                                                                        
+                                    <bt:Image resid="Windchill.NewDocButton.Icon" size="80"/>
+                                                                    
+                                </Icon>
+                                                                
+                                <!-- New Document Button -->
+                                                                
+                                <Control id="Windchill.NewDocButton" xsi:type="Button">
+                                                                        
+                                    <Label resid="Windchill.NewDocButton.Label"/>
+                                                                        
+                                    <Supertip>
+                                                                                
+                                        <Title resid="Windchill.NewDocButton.Label"/>
+                                                                                
+                                        <Description resid="Windchill.NewDocButton.Tooltip"/>
+                                                                            
+                                    </Supertip>
+                                                                        
+                                    <Icon>
+                                                                                
+                                        <bt:Image resid="Windchill.NewDocButton.Icon" size="16"/>
+                                                                                
+                                        <bt:Image resid="Windchill.NewDocButton.Icon" size="32"/>
+                                                                                
+                                        <bt:Image resid="Windchill.NewDocButton.Icon" size="80"/>
+                                                                            
+                                    </Icon>
+                                                                        
+                                    <Action xsi:type="ExecuteFunction">
+                                                                                
+                                        <FunctionName>newDocument</FunctionName>
+                                                                            
+                                    </Action>
+                                                                    
+                                </Control>
+                                                                
+                                <!-- Checkin Button -->
+                                                                
+                                <Control id="Windchill.CheckinButton" xsi:type="Button">
+                                                                        
+                                    <Label resid="Windchill.CheckinButton.Label"/>
+                                                                        
+                                    <Supertip>
+                                                                                
+                                        <Title resid="Windchill.CheckinButton.Label"/>
+                                                                                
+                                        <Description resid="Windchill.CheckinButton.Tooltip"/>
+                                                                            
+                                    </Supertip>
+                                                                        
+                                    <Icon>
+                                                                                
+                                        <bt:Image resid="Windchill.CheckinButton.Icon" size="16"/>
+                                                                                
+                                        <bt:Image resid="Windchill.CheckinButton.Icon" size="32"/>
+                                                                                
+                                        <bt:Image resid="Windchill.CheckinButton.Icon" size="80"/>
+                                                                            
+                                    </Icon>
+                                                                        
+                                    <Action xsi:type="ExecuteFunction">
+                                                                                
+                                        <FunctionName>checkinFunction</FunctionName>
+                                                                            
+                                    </Action>
+                                                                    
+                                </Control>
+                                                                
+                                <!-- Checkout Menu -->
+                                                                
+                                <Control id="Windchill.Menu" xsi:type="Menu">
+                                                                        
+                                    <Label resid="Windchill.Dropdown.Label"/>
+                                                                        
+                                    <Supertip>
+                                                                                
+                                        <Title resid="Windchill.Dropdown.Label"/>
+                                                                                
+                                        <Description resid="Windchill.Dropdown.Tooltip"/>
+                                                                            
+                                    </Supertip>
+                                                                        
+                                    <Icon>
+                                                                                
+                                        <bt:Image resid="Windchill.CheckoutButton.Icon" size="16"/>
+                                                                                
+                                        <bt:Image resid="Windchill.CheckoutButton.Icon" size="32"/>
+                                                                                
+                                        <bt:Image resid="Windchill.CheckoutButton.Icon" size="80"/>
+                                                                            
+                                    </Icon>
+                                                                        
+                                    <Items>
+                                                                                
+                                        <!-- Checkout Menu Item -->
+                                                                                
+                                        <Item id="Windchill.Menu.Checkout">
+                                                                                        
+                                            <Label resid="Windchill.Checkout.Label"/>
+                                                                                        
+                                            <Supertip>
+                                                                                                
+                                                <Title resid="Windchill.Checkout.Label"/>
+                                                                                                
+                                                <Description resid="Windchill.Checkout.Tooltip"/>
+                                                                                            
+                                            </Supertip>
+                                                                                        
+                                            <Icon>
+                                                                                                
+                                                <bt:Image resid="Windchill.CheckoutButton.Icon.16" size="16"/>
+                                                                                                
+                                                <bt:Image resid="Windchill.CheckoutButton.Icon" size="32"/>
+                                                                                                
+                                                <bt:Image resid="Windchill.CheckoutButton.Icon" size="80"/>
+                                                                                            
+                                            </Icon>
+                                                                                        
+                                            <Action xsi:type="ExecuteFunction">
+                                                                                                
+                                                <FunctionName>checkOutFunction</FunctionName>
+                                                                                            
+                                            </Action>
+                                                                                    
+                                        </Item>
+                                                                                
+                                        <!-- Undo-Checkout Menu Item -->
+                                                                                
+                                        <Item id="Windchill.Menu.UndoCheckout">
+                                                                                        
+                                            <Label resid="Windchill.UndoCheckout.Label"/>
+                                                                                        
+                                            <Supertip>
+                                                                                                
+                                                <Title resid="Windchill.UndoCheckout.Label"/>
+                                                                                                
+                                                <Description resid="Windchill.UndoCheckout.Tooltip"/>
+                                                                                            
+                                            </Supertip>
+                                                                                        
+                                            <Icon>
+                                                                                                
+                                                <bt:Image resid="Windchill.UndoCheckoutButton.Icon" size="16"/>
+                                                                                                
+                                                <bt:Image resid="Windchill.UndoCheckoutButton.Icon" size="32"/>
+                                                                                                
+                                                <bt:Image resid="Windchill.UndoCheckoutButton.Icon" size="80"/>
+                                                                                            
+                                            </Icon>
+                                                                                        
+                                            <Action xsi:type="ExecuteFunction">
+                                                                                                
+                                                <FunctionName>undoCheckOutFunction</FunctionName>
+                                                                                            
+                                            </Action>
+                                                                                    
+                                        </Item>
+                                                                            
+                                    </Items>
+                                                                    
+                                </Control>
+                                                            
+                            </Group>
+                                                        
+                            <!-- View Information Group -->
+                                                        
+                            <Group id="Windchill.Ribbon.ViewGroup">
+                                                                
+                                <Label resid="Windchill.Ribbon.ViewGroupLabel"/>
+                                                                
+                                <Icon>
+                                                                        
+                                    <bt:Image resid="Windchill.ViewInfoButton.Icon" size="16"/>
+                                                                        
+                                    <bt:Image resid="Windchill.ViewInfoButton.Icon" size="32"/>
+                                                                        
+                                    <bt:Image resid="Windchill.ViewInfoButton.Icon" size="80"/>
+                                                                    
+                                </Icon>
+                                                                
+                                <!-- View Information Button -->
+                                                                
+                                <Control id="Windchill.ViewInfoButton" xsi:type="Button">
+                                                                        
+                                    <Label resid="Windchill.ViewInfoButton.Label"/>
+                                                                        
+                                    <Supertip>
+                                                                                
+                                        <Title resid="Windchill.ViewInfoButton.Label"/>
+                                                                                
+                                        <Description resid="Windchill.ViewInfoButton.Tooltip"/>
+                                                                            
+                                    </Supertip>
+                                                                        
+                                    <Icon>
+                                                                                
+                                        <bt:Image resid="Windchill.ViewInfoButton.Icon" size="16"/>
+                                                                                
+                                        <bt:Image resid="Windchill.ViewInfoButton.Icon" size="32"/>
+                                                                                
+                                        <bt:Image resid="Windchill.ViewInfoButton.Icon" size="80"/>
+                                                                            
+                                    </Icon>
+                                                                        
+                                    <Action xsi:type="ExecuteFunction">
+                                                                                
+                                        <FunctionName>viewInfoFunction</FunctionName>
+                                                                            
+                                    </Action>
+                                                                    
+                                </Control>
+                                                            
+                            </Group>
+                                                        
+                            <Label resid="Windchill.Ribbon.Label"/>
+                                                    
+                        </CustomTab>
+                                            
+                    </ExtensionPoint>
+                                    
+                </DesktopFormFactor>
+                            
+            </Host>
+                        
+            <!-- PowerPoint Online Ribbon bar -->
+                        
+            <Host xsi:type="Presentation">
+                                
+                <DesktopFormFactor>
+                                        
+                    <GetStarted>
+                                                
+                        <Title resid="Windchill.GetStarted.Title"/>
+                                                
+                        <Description resid="Windchill.GetStarted.Description"/>
+                                                
+                        <LearnMoreUrl resid="LearnMoreUrlRes"/>
+                                            
+                    </GetStarted>
+                                        
+                    <FunctionFile resid="Windchill.FunctionFile.Url"/>
+                                        
+                    <ExtensionPoint xsi:type="PrimaryCommandSurface">
+                                                
+                        <CustomTab id="Windchill.Ribbon">
+                                                        
+                            <!-- Document Group -->
+                                                        
+                            <Group id="Windchill.Ribbon.DocumentGroup">
+                                                                
+                                <Label resid="Windchill.Ribbon.DocumentGroupLabel"/>
+                                                                
+                                <Icon>
+                                                                        
+                                    <bt:Image resid="Windchill.NewDocButton.Icon" size="16"/>
+                                                                        
+                                    <bt:Image resid="Windchill.NewDocButton.Icon" size="32"/>
+                                                                        
+                                    <bt:Image resid="Windchill.NewDocButton.Icon" size="80"/>
+                                                                    
+                                </Icon>
+                                                                
+                                <!-- New Document Button -->
+                                                                
+                                <Control id="Windchill.NewDocButton" xsi:type="Button">
+                                                                        
+                                    <Label resid="Windchill.NewDocButton.Label"/>
+                                                                        
+                                    <Supertip>
+                                                                                
+                                        <Title resid="Windchill.NewDocButton.Label"/>
+                                                                                
+                                        <Description resid="Windchill.NewDocButton.Tooltip"/>
+                                                                            
+                                    </Supertip>
+                                                                        
+                                    <Icon>
+                                                                                
+                                        <bt:Image resid="Windchill.NewDocButton.Icon" size="16"/>
+                                                                                
+                                        <bt:Image resid="Windchill.NewDocButton.Icon" size="32"/>
+                                                                                
+                                        <bt:Image resid="Windchill.NewDocButton.Icon" size="80"/>
+                                                                            
+                                    </Icon>
+                                                                        
+                                    <Action xsi:type="ExecuteFunction">
+                                                                                
+                                        <FunctionName>newDocument</FunctionName>
+                                                                            
+                                    </Action>
+                                                                    
+                                </Control>
+                                                            
+                            </Group>
+                                                        
+                            <!-- View Information Group -->
+                                                        
+                            <Group id="Windchill.Ribbon.ViewGroup">
+                                                                
+                                <Label resid="Windchill.Ribbon.ViewGroupLabel"/>
+                                                                
+                                <Icon>
+                                                                        
+                                    <bt:Image resid="Windchill.ViewInfoButton.Icon" size="16"/>
+                                                                        
+                                    <bt:Image resid="Windchill.ViewInfoButton.Icon" size="32"/>
+                                                                        
+                                    <bt:Image resid="Windchill.ViewInfoButton.Icon" size="80"/>
+                                                                    
+                                </Icon>
+                                                                
+                                <!-- View Information Button -->
+                                                                
+                                <Control id="Windchill.ViewInfoButton" xsi:type="Button">
+                                                                        
+                                    <Label resid="Windchill.ViewInfoButton.Label"/>
+                                                                        
+                                    <Supertip>
+                                                                                
+                                        <Title resid="Windchill.ViewInfoButton.Label"/>
+                                                                                
+                                        <Description resid="Windchill.ViewInfoButton.Tooltip"/>
+                                                                            
+                                    </Supertip>
+                                                                        
+                                    <Icon>
+                                                                                
+                                        <bt:Image resid="Windchill.ViewInfoButton.Icon" size="16"/>
+                                                                                
+                                        <bt:Image resid="Windchill.ViewInfoButton.Icon" size="32"/>
+                                                                                
+                                        <bt:Image resid="Windchill.ViewInfoButton.Icon" size="80"/>
+                                                                            
+                                    </Icon>
+                                                                        
+                                    <Action xsi:type="ExecuteFunction">
+                                                                                
+                                        <FunctionName>viewInfoFunction</FunctionName>
+                                                                            
+                                    </Action>
+                                                                    
+                                </Control>
+                                                            
+                            </Group>
+                                                        
+                            <Label resid="Windchill.Ribbon.Label"/>
+                                                    
+                        </CustomTab>
+                                            
+                    </ExtensionPoint>
+                                    
+                </DesktopFormFactor>
+                            
+            </Host>
+                        
+        
+        </Hosts>
+                
+        
+        <Resources>
+                        
+            <bt:Images>
+                                
+                <bt:Image DefaultValue="https://google.com:2222/Windchill/netmarkets/images/checkin_32x32.png" id="Windchill.CheckinButton.Icon"/>
+                                    
+                
+                <bt:Image DefaultValue="https://google.com:2222/Windchill/netmarkets/images/document_new_32x32.png" id="Windchill.NewDocButton.Icon"/>
+                                    
+                
+                <bt:Image DefaultValue="https://google.com:2222/Windchill/netmarkets/images/checkout_32x32.png" id="Windchill.CheckoutButton.Icon"/>
+                                    
+                
+                <bt:Image DefaultValue="https://google.com:2222/Windchill/netmarkets/images/checkout_16x16.png" id="Windchill.CheckoutButton.Icon.16"/>
+                                    
+                
+                <bt:Image DefaultValue="https://google.com:2222/Windchill/netmarkets/images/uncheckout_16x16.png" id="Windchill.UndoCheckoutButton.Icon"/>
+                                    
+                
+                <bt:Image DefaultValue="https://google.com:2222/Windchill/netmarkets/images/about_32x32.png" id="Windchill.ViewInfoButton.Icon"/>
+                                    
+                
+            
+            </bt:Images>
+                        
+            
+            <bt:Urls>
+                                
+                
+                <bt:Url DefaultValue="https://google.com:2222/Windchill/netmarkets/html/officeapp/FunctionFile.html" id="Windchill.FunctionFile.Url"/>
+                                
+                
+                <bt:Url DefaultValue="https://google.com:2222/Windchill/netmarkets/html/officeapp/GetStarted.html" id="LearnMoreUrlRes">
+                </bt:Url>
+                            
+            </bt:Urls>
+                        
+            
+            <bt:ShortStrings>
+                                
+                <bt:String DefaultValue="New" id="Windchill.NewDocButton.Label"/>
+                                
+                <bt:String DefaultValue="Checkin" id="Windchill.CheckinButton.Label"/>
+                                
+                <bt:String DefaultValue="Checkout" id="Windchill.Dropdown.Label"/>
+                                
+                <bt:String DefaultValue="Checkout" id="Windchill.Checkout.Label"/>
+                                
+                <bt:String DefaultValue="Undo Checkout" id="Windchill.UndoCheckout.Label"/>
+                                
+                <bt:String DefaultValue="View Information" id="Windchill.ViewInfoButton.Label"/>
+                                
+                <bt:String DefaultValue="Document" id="Windchill.Ribbon.DocumentGroupLabel"/>
+                                
+                <bt:String DefaultValue="View" id="Windchill.Ribbon.ViewGroupLabel"/>
+                                
+                <bt:String DefaultValue="Windchill" id="Windchill.Ribbon.Label"/>
+                                
+                <bt:String DefaultValue="Simple add-in was succesfully loaded" id="Windchill.GetStarted.Title">
+                                        
+                    <bt:Override Locale="ja-jp" Value="JA-JP Get Started Title"/>
+                                    
+                </bt:String>
+                            
+            </bt:ShortStrings>
+                        
+            
+            <bt:LongStrings>
+                                
+                <bt:String DefaultValue="Click to create new document" id="Windchill.NewDocButton.Tooltip"/>
+                                
+                <bt:String DefaultValue="Click to checkin document" id="Windchill.CheckinButton.Tooltip"/>
+                                
+                <bt:String DefaultValue="Click to Show Options on this Menu" id="Windchill.Dropdown.Tooltip"/>
+                                
+                <bt:String DefaultValue="Click to checkout document" id="Windchill.Checkout.Tooltip"/>
+                                
+                <bt:String DefaultValue="Click to undo checkout document" id="Windchill.UndoCheckout.Tooltip"/>
+                                
+                <bt:String DefaultValue="View Information" id="Windchill.ViewInfoButton.Tooltip"/>
+                                
+                <bt:String DefaultValue="Get going by opening Windchill TAB on the Ribbon" id="Windchill.GetStarted.Description">
+                                        
+                    <bt:Override Locale="ja-jp" Value="JA-JP Get Started Title"/>
+                                    
+                </bt:String>
+                            
+            </bt:LongStrings>
+                    
+        </Resources>
+                
+        <EquivalentAddins>
+                        
+            <EquivalentAddin>
+                                
+                <ProgId>wtOfficeNet.Connect</ProgId>
+                                
+                <Type>COM</Type>
+                            
+            </EquivalentAddin>
+                    
+        </EquivalentAddins>
+            
+    </VersionOverrides>
+    
+</OfficeApp>
