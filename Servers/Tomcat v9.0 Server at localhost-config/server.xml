@@ -60,7 +60,7 @@
          APR (HTTP/AJP) Connector: /docs/apr.html
          Define a non-SSL/TLS HTTP/1.1 Connector on port 8080
     -->
-    <Connector connectionTimeout="20000" port="8080" protocol="HTTP/1.1" redirectPort="8443"/>
+    <Connector connectionTimeout="20000" port="9090" protocol="HTTP/1.1" redirectPort="8443"/>
     <!-- A "Connector" using the shared thread pool-->
     <!--
     <Connector executor="tomcatThreadPool"
@@ -149,7 +149,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="JSP Expressions" path="/JSP_Expressions" reloadable="true" source="org.eclipse.jst.jee.server:JSP Expressions"/><Context docBase="JSP Scriptlet" path="/JSP_Scriptlet" reloadable="true" source="org.eclipse.jst.jee.server:JSP Scriptlet"/><Context docBase="JSP Declarations" path="/JSP_Declarations" reloadable="true" source="org.eclipse.jst.jee.server:JSP Declarations"/><Context docBase="JSP Hello" path="/Hello_JSP" reloadable="true" source="org.eclipse.jst.jee.server:JSP Hello"/><Context docBase="Servlets Hello" path="/Hello_Servlets" reloadable="true" source="org.eclipse.jst.jee.server:Servlets Hello"/><Context docBase="Servlets Annotations" path="/Servlets_Annotations" reloadable="true" source="org.eclipse.jst.jee.server:Servlets Annotations"/><Context docBase="Reading URL parameters" path="/Reading_URL_parameters" reloadable="true" source="org.eclipse.jst.jee.server:Reading URL parameters"/></Host>
+      </Host>
     </Engine>
   </Service>
 </Server>
