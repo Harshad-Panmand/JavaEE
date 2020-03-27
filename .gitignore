@@ -1,2 +1,5 @@
 /.metadata/
 Servers/Tomcat v9.0 Server at localhost-config/server.xml
+*/.project
+*/.classpath
+*/.settings/
