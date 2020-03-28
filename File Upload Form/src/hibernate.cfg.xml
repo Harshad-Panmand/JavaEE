@@ -1,0 +1,21 @@
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" 
+	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+	
+<hibernate-configuration>
+	<session-factory>
+		<!-- Connection Settings -->
+		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+		
+		<!-- Sample MySql url provided -->
+		<property name="connection.url">jdbc:mysql://localhost:3306/files</property>
+		<property name="connection.username">harshad</property>
+		<property name="connection.password">Harshad@123</property>
+		
+		<!-- Show sql on console -->
+		<property name="show_sql">true</property>
+		
+		<!-- Setting session context model -->
+		<property name="current_session_context_class">thread</property>
+	</session-factory>
+</hibernate-configuration>
