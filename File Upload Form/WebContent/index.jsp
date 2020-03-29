@@ -8,10 +8,12 @@
 </head>
 <body>
 
-<form action="ImageUpload" method="post" enctype="multipart/form-data">
+<form action="ImageUpload?action=fileUpload" method="post" enctype="multipart/form-data">
 Select Images: <input type="file" name="files" multiple>
 <input type="submit" value="upload">
 </form>
+
+<a href="${pageContext.request.contextPath}/ImageUpload?action=listingImages">View Available Images</a>
 
 </body>
 </html>

@@ -1,11 +1,17 @@
 package com.hibernate.DAO;
 
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 import com.hibernate.entity.Files;
-
+/**
+ * This is Data Access Object class for files
+ * @author hpanmand
+ *
+ */
 public class FilesDAO {
 	SessionFactory factory = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Files.class)
 			.buildSessionFactory();
@@ -16,5 +22,12 @@ public class FilesDAO {
 		session.save(file);
 		session.getTransaction().commit();
 		System.out.println(file.getFileName() + " Got Added");
+	}
+
+	public List<Files> listFiles() {
+		Session session = factory.getCurrentSession();
+		session.beginTransaction();
+		List<Files> files = session.createQuery("from files").getResultList();
+		return files;
 	}
 }

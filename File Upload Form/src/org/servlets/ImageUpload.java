@@ -20,29 +20,72 @@ import com.hibernate.entity.Files;
 @WebServlet("/ImageUpload")
 public class ImageUpload extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static String tempPath = System.getProperty("java.io.tmpdir");
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
+		String actionParam = request.getParameter("action");
+
+		switch (actionParam) {
+		case "fileUpload":
+			filesUpload(request, response);
+			break;
+		default:
+			request.getRequestDispatcher("index.jsp").forward(request, response);
+		}
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		String actionParam = request.getParameter("action");
+
+		switch (actionParam) {
+
+		case "listingImages":
+			listingImages(request, response);
+			break;
+		default:
+			request.getRequestDispatcher("index.jsp").forward(request, response);
+		}
+	}
+
+	public void filesUpload(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		System.out.println("File will get uploaded to " + tempPath);
+
 		ServletFileUpload upload = new ServletFileUpload(new DiskFileItemFactory());
-		System.out.println("File will get uploaded to " + System.getProperty("java.io.tmpdir"));
+
 		try {
 			List<FileItem> files = upload.parseRequest(request);
-			for (FileItem file : files) {
+			for (FileItem fileItem : files) {
 				// On windows getName returns full file path
-				String fileName = file.getName();
+				String fileName = fileItem.getName();
 				try {
 					fileName = fileName.substring(fileName.lastIndexOf("\\") + 1);
 				} catch (Exception e) {
 					System.out.println(e.getLocalizedMessage());
 				}
+				File file = new File(tempPath + fileName);
 
-				new FilesDAO().addFileDetails(new Files(fileName));
-				file.write(new File(System.getProperty("java.io.tmpdir") + fileName));
-				System.out.println(fileName);
+				if (!file.exists()) {
+					new FilesDAO().addFileDetails(new Files(fileName));
+					fileItem.write(file);
+				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		listingImages(request, response);
 	}
 
+	public void listingImages(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		List<Files> files = new FilesDAO().listFiles();
+		request.setAttribute("files", files);
+		request.setAttribute("path", tempPath);
+		request.getRequestDispatcher("listFiles.jsp").forward(request, response);
+	}
 }
