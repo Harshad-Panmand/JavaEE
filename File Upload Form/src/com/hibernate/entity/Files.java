@@ -25,7 +25,7 @@ public class Files {
 		this.fileName = fileName2;
 	}
 
-	public void Files() {
+	public Files() {
 	}
 
 	public int getId() {
@@ -58,5 +58,10 @@ public class Files {
 
 	public void setCaption(String caption) {
 		this.caption = caption;
+	}
+
+	@Override
+	public String toString() {
+		return "Files [id = " + id + " fileName = " + fileName + " label = " + label + " caption = " + caption + "]";
 	}
 }
