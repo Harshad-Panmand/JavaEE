@@ -21,11 +21,11 @@ public class Files {
 	@Column(name = "caption")
 	String caption;
 
-	public Files(String fileName2) {
-		this.fileName = fileName2;
+	public Files() {
 	}
 
-	public Files() {
+	public Files(String fileName2) {
+		this.fileName = fileName2;
 	}
 
 	public int getId() {

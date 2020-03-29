@@ -17,8 +17,8 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import com.hibernate.DAO.FilesDAO;
 import com.hibernate.entity.Files;
 
-@WebServlet("/ImageUpload")
-public class ImageUpload extends HttpServlet {
+@WebServlet("/FilesHandler")
+public class FilesHandler extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static String tempPath = System.getProperty("java.io.tmpdir");
 
@@ -31,6 +31,11 @@ public class ImageUpload extends HttpServlet {
 		case "fileUpload":
 			filesUpload(request, response);
 			break;
+
+		case "updateInformation":
+			updateInformation(request, response);
+			break;
+
 		default:
 			request.getRequestDispatcher("index.jsp").forward(request, response);
 		}
@@ -87,5 +92,14 @@ public class ImageUpload extends HttpServlet {
 		request.setAttribute("files", files);
 		request.setAttribute("path", tempPath);
 		request.getRequestDispatcher("listFiles.jsp").forward(request, response);
+	}
+
+	public void updateInformation(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		int fileId = Integer.parseInt(request.getParameter("fileId"));
+		String label = request.getParameter("label");
+		String caption = request.getParameter("caption");
+		new FilesDAO().udpateInformation(fileId, label, caption);
+		listingImages(request, response);
 	}
 }

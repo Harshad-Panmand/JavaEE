@@ -7,8 +7,10 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 import com.hibernate.entity.Files;
+
 /**
  * This is Data Access Object class for files
+ * 
  * @author hpanmand
  *
  */
@@ -29,5 +31,14 @@ public class FilesDAO {
 		session.beginTransaction();
 		List<Files> files = session.createQuery("from files").getResultList();
 		return files;
+	}
+
+	public void udpateInformation(int id, String label, String caption) {
+		Session session = factory.getCurrentSession();
+		session.beginTransaction();
+		Files file = session.get(Files.class, id);
+		file.setLabel(label);
+		file.setCaption(caption);
+		session.getTransaction().commit();
 	}
 }
