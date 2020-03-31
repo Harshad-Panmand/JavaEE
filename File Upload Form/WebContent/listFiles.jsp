@@ -18,7 +18,7 @@
 <th>Preview</th>
 <th>Available Information</th>
 <th>Update Information</th>
-<th>Action</th>
+<th>Available Action</th>
 <%
 	List<Files> files = (List<Files>)request.getAttribute("files");
 	String path = (String) request.getAttribute("path");
@@ -27,21 +27,37 @@
 	String updateForm =	"";
 
 	for (Files file : files) {
+
 		out.print("<tr><td><img src=" + "'" + path + file.getFileName() + "'" + "height='200'" + ">" + "</td>");
+
+		fileId =file.getId();
+
 		out.print("<td><ul>" +
-				"<li>File ID:" + file.getId() + "</li>" +
-				"<li>File Name:" + file.getFileName() + "</li>" +
-				"<li>File Label:" + file.getCaption() + "</li>" +
-				"<li>File Caption:" + file.getLabel() + "</li>" +
-				"</ul></td>" +
-				"<td>"+
-				"<form action='FilesHandler' method='post'>"+
-				"Label: <input type='text' name='label'/> <br/><br/>"+
-				"Caption: <input type='text' name='caption'/> <br/><br/>"+
-				"<input type='hidden' name='fileId' value='"+file.getId()+"'>"+
-				"<input type='hidden' name='action' value='updateInformation'>"+
-				"<input type='submit' name='Update'>"+
-				"</form></td>"+
+		"<li>File ID:" + fileId + "</li>" +
+		"<li>File Name:" + file.getFileName() + "</li>" +
+		"<li>File Label:" + file.getCaption() + "</li>" +
+		"<li>File Caption:" + file.getLabel() + "</li>" +
+		"</ul></td>" +
+		"<td>"+
+		"<form action='FilesHandler' method='post'>"+
+		"Label: <input type='text' name='label'/> <br/><br/>"+
+		"Caption: <input type='text' name='caption'/> <br/><br/>"+
+		"<input type='hidden' name='fileId' value='"+fileId+"'>"+
+		"<input type='hidden' name='action' value='updateInformation'>"+
+		"<input type='submit' name='Update'>"+
+		"</form>"+
+		"</td>");
+
+		out.print("<td>" +
+				"<ul><li>" +
+				"<a href='" + request.getContextPath() + "/FilesHandler?action=viewImage&fileId=" + fileId + "'>View</a>" +
+				"</li></ul>");
+
+		out.print("<ul><li>" +
+				"<a href='" + request.getContextPath() + "/FilesHandler?action=deleteImage&fileId=" + fileId + "'" +
+				"onclick=\"if(!confirm('Are you sure to delete this file?')) return false\">Delete</a>" +
+				"</li></ul>" +
+				"</td>" +
 				"</tr>");
 	}
 %>

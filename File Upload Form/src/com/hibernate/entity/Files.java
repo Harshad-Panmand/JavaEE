@@ -24,8 +24,8 @@ public class Files {
 	public Files() {
 	}
 
-	public Files(String fileName2) {
-		this.fileName = fileName2;
+	public Files(String fileName) {
+		this.fileName = fileName;
 	}
 
 	public int getId() {

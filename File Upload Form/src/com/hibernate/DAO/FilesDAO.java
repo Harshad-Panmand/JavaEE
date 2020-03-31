@@ -1,5 +1,6 @@
 package com.hibernate.DAO;
 
+import java.io.File;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -39,6 +40,22 @@ public class FilesDAO {
 		Files file = session.get(Files.class, id);
 		file.setLabel(label);
 		file.setCaption(caption);
+		session.getTransaction().commit();
+	}
+
+	public Files getFile(int fileId) {
+		Session session = factory.getCurrentSession();
+		session.beginTransaction();
+		Files file = session.get(Files.class, fileId);
+		session.getTransaction().commit();
+		return file;
+	}
+
+	public void deleteFile(int fileId) {
+		Session session = factory.getCurrentSession();
+		session.beginTransaction();
+		Files file = session.get(Files.class, fileId);
+		session.delete(file);
 		session.getTransaction().commit();
 	}
 }
