@@ -51,6 +51,16 @@ public class FilesHandler extends HttpServlet {
 		case "listingImages":
 			listingImages(request, response);
 			break;
+
+		case "viewImage":
+			viewImage(request, response);
+			break;
+
+
+		case "deleteImage":
+			deleteImage(request, response);
+			break;
+
 		default:
 			request.getRequestDispatcher("index.jsp").forward(request, response);
 		}
@@ -100,6 +110,31 @@ public class FilesHandler extends HttpServlet {
 		String label = request.getParameter("label");
 		String caption = request.getParameter("caption");
 		new FilesDAO().udpateInformation(fileId, label, caption);
+		listingImages(request, response);
+	}
+
+	public void viewImage(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		int fileId = Integer.parseInt(request.getParameter("fileId"));
+		Files file = new FilesDAO().getFile(fileId);
+		request.setAttribute("file", file);
+		request.setAttribute("path", tempPath);
+		request.getRequestDispatcher("viewImage.jsp").forward(request, response);
+	}
+
+	public void deleteImage(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		int fileId = Integer.parseInt(request.getParameter("fileId"));
+		Files file = new FilesDAO().getFile(fileId);
+		new FilesDAO().deleteFile(fileId);
+
+		// Delete file from physical location
+		File fileOnDisc = new File(tempPath+file.getFileName());
+		if(fileOnDisc.delete()) {
+			System.out.println("File got deleted from physical location");
+		}else {
+			System.out.println("File cannot deleted from physical location");
+		}
 		listingImages(request, response);
 	}
 }
